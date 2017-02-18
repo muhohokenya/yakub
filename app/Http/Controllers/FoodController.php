@@ -14,7 +14,12 @@ class FoodController extends Controller
     public function index()
     {
         //
-        return view('food.index');
+        $foods = Food::all();
+
+        $data = array(
+            'foods'=>$foods,
+        );
+        return view('food.index',$data);
     }
 
     /**
@@ -47,6 +52,8 @@ class FoodController extends Controller
         $food_object = new Food();
         $food_object->food = $food;
         $food_object->cost = $cost;
+        $food_object->save();
+        return redirect('foods');
     }
 
     /**

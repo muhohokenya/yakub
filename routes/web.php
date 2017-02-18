@@ -15,17 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+// ROOMS
 Route::get('rooms','RoomsController@index');
 
 
-
+// FOODS
 Route::get('foods','FoodController@index');
 Route::get('foods/new','FoodController@create');
 Route::post('foods/save','FoodController@store');
 
 
-
+// SERVICES
 Route::get('services','ServiceController@index');
+Route::get('services/new','ServiceController@create');
+Route::post('services/save','ServiceController@store');
 
 
 

@@ -1,4 +1,5 @@
 @extends('centaur.layout')
+@section('title', 'New Food')
 @section('content')
 <div class="page-header">
   <h3>Add new</h3>

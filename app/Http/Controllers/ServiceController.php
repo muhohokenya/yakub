@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -14,6 +14,12 @@ class ServiceController extends Controller
     public function index()
     {
         //
+        $services = Service::all();
+
+        $data_array = array(
+            'services'=>$services,
+        );
+        return view('services.index',$data_array);
     }
 
     /**
@@ -24,6 +30,7 @@ class ServiceController extends Controller
     public function create()
     {
         //
+        return view('services.new');
     }
 
     /**
@@ -35,6 +42,16 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
+
+        $service_name = $request->service;
+        $this->validate($request,[
+            'service'=>'required'
+        ]);
+
+        $service = new Service();
+        $service->name = $service_name;
+        $service->save();
+        return redirect('services');
     }
 
     /**
