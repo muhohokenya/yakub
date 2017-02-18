@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Service;
+use App\Room;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RoomsController extends Controller
@@ -14,7 +16,11 @@ class RoomsController extends Controller
     public function index()
     {
         //
-        return view('rooms.index');
+        $rooms = Room::all();
+        $data_array = array(
+            'rooms'=>$rooms,
+        );
+        return view('rooms.index',$data_array);
     }
 
     /**
@@ -25,6 +31,11 @@ class RoomsController extends Controller
     public function create()
     {
         //
+        $services = Service::all();
+        $data_array = array(
+            'services'=>$services,
+        );
+        return view('rooms.new',$data_array);
     }
 
     /**
@@ -36,7 +47,38 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         //
+         $this->validate($request,[
+           'room'=>'required',
+           'charges'=>'required|integer',
+        ]);
+
+         $room = $request->room;
+         $charges = $request->charges;
+
+         $room_object = new Room();
+         $room_object->number = $room;
+         $room_object->charges = $charges;
+         $room_object->save();
+
+
+          $services = $request->services;
+         
+          if(is_array($services)){
+
+                 foreach ($services as $service) {
+                  DB::table('room_service')->insert(
+                    ['room_id' => $room,'service_id' => $service]
+                );
+          }
+          }
+
+         
+          
+          return redirect('/rooms');
     }
+
+
+
 
     /**
      * Display the specified resource.

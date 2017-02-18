@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 // ROOMS
 Route::get('rooms','RoomsController@index');
+Route::get('rooms/new','RoomsController@create');
+Route::post('rooms/save','RoomsController@store');
 
 
 // FOODS
