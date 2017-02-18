@@ -7,7 +7,7 @@
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3 class="panel-title">Panel title</h3>
+			<h3 class="panel-title">Room Panel</h3>
 		</div>
 		<div class="panel-body">
 			<table class="table table-bordered table-hover">
@@ -16,6 +16,7 @@
 						<th>#</th>
 						<th>Room Number</th>
 						<th>Room Charges</th>
+						<th>Room Services</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -25,6 +26,17 @@
 						<td>{{ $loop->iteration }}</td>
 						<td>{{ $room->number }}</td>
 						<td>{{ $room->charges }}</td>
+						<td>
+
+						   <div class="checkbox">
+							@foreach($room->services as $service)
+							 <label>
+								<input name="services[]"  checked="" readonly="" type="checkbox" value="{{ $service->id }}">
+								{{ $service->name }}
+							</label>
+							@endforeach
+						</div>
+						</td>
 					</tr>
 			@endforeach
 					

@@ -16,7 +16,7 @@
 					<h3 class="panel-title">room Panel</h3>
 				</div>
 				<div class="panel-body">
-					{!! Form::open(['method' => 'POST', 'url' => 'rooms/save', 'class' => '']) !!}
+					{!! Form::open(['method' => 'POST', 'url' => 'rooms/save', 'class' => '','autocomplete'=>'off']) !!}
 					
 					    <div class="form-group{{ $errors->has('room') ? ' has-error' : '' }}">
 					        {!! Form::label('room', 'room number') !!}
