@@ -21,6 +21,7 @@ Route::get('rooms','RoomsController@index');
 
 Route::get('foods','FoodController@index');
 Route::get('foods/new','FoodController@create');
+Route::post('foods/save','FoodController@store');
 
 
 
