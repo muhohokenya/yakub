@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::get('rooms','RoomsController@index');
 Route::get('rooms/new','RoomsController@create');
 Route::post('rooms/save','RoomsController@store');
+Route::get('available/rooms','RoomsController@get_available_rooms');
 
 
 // FOODS

@@ -23,6 +23,17 @@ class RoomsController extends Controller
         return view('rooms.index',$data_array);
     }
 
+
+    public function get_available_rooms()
+    {
+        # code...
+        $rooms = Room::all();
+        $data_array = array(
+            'rooms'=>$rooms,
+        );
+         return view('rooms.available',$data_array);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

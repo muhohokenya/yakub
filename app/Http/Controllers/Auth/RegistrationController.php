@@ -63,17 +63,17 @@ class RegistrationController extends Controller
             return $result->dispatch();
         }
 
-        // Send the activation email
-        $code = $result->activation->getCode();
-        $email = $result->user->email;
-        Mail::queue(
-            'centaur.email.welcome',
-            ['code' => $code, 'email' => $email],
-            function ($message) use ($email) {
-                $message->to($email)
-                    ->subject('Your account has been created');
-            }
-        );
+        // // Send the activation email
+        // $code = $result->activation->getCode();
+        // $email = $result->user->email;
+        // Mail::queue(
+        //     'centaur.email.welcome',
+        //     ['code' => $code, 'email' => $email],
+        //     function ($message) use ($email) {
+        //         $message->to($email)
+        //             ->subject('Your account has been created');
+        //     }
+        // );
 
         // Ask the user to check their email for the activation link
         $result->setMessage('Registration complete.  Please check your email for activation instructions.');
