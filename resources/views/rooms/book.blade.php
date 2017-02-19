@@ -28,7 +28,7 @@
 			<strong>{{ Session::get('status') }}</strong>
 		</div>
 	@endif
-	{!! Form::open(['method' => 'POST', 'url' => 'book/room/'.$room->id, 'class' => 'form-horizontal']) !!}
+	{!! Form::open(['method' => 'POST', 'url' => 'book/room/'.$room->id, 'class' => 'form-horizontal','autocomplete' => 'off']) !!}
 	
 	    <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
 	        {!! Form::label('first_name', 'Full Name') !!}

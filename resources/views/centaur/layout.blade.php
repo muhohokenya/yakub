@@ -26,8 +26,8 @@
   <script type="text/javascript" src="{{ url('/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -43,8 +43,8 @@
                     <ul class="nav navbar-nav">
                         
                         @if (Sentinel::check() && Sentinel::inRole('administrator'))
-                            <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
-                            <li class="{{ Request::is('roles*') ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li>
+                            {{-- <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
+                            <li class="{{ Request::is('roles*') ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li> --}}
                             <li class="{{ Request::is('rooms*') ? 'active' : '' }}"><a href="{{ url('rooms') }}">Rooms</a></li>
                             <li class="{{ Request::is('foods*') ? 'active' : '' }}"><a href="{{ url('foods') }}">Foods</a></li>
                             <li class="{{ Request::is('services*') ? 'active' : '' }}"><a href="{{ url('services') }}">Services</a></li>
@@ -52,21 +52,22 @@
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        @if (Sentinel::check() && !Sentinel::inRole('administrator'))
+                        @if (Sentinel::check())
                             <li><a href="{{ url('available/rooms') }}">Rooms</a></li>
+                            <li><a href="{{ url('bookings') }}">Bookings</a></li>
                             <li><p class="navbar-text">{{ Sentinel::getUser()->email }}</p></li>
                            
                             <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
                         @else
                             <li><a href="{{ route('auth.login.form') }}">Login</a></li>
                             <li><a href="{{ route('auth.register.form') }}">Register</a></li>
-                            <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
+                           
                         @endif
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <div class="container">
+        <div class="container" style="padding-top:50px; ">
             @include('Centaur::notifications')
             @yield('content')
         </div>

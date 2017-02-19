@@ -16,7 +16,7 @@ class RoomsController extends Controller
     public function index()
     {
         //
-        $rooms = Room::all();
+        $rooms = Room::paginate(5);
         $data_array = array(
             'rooms'=>$rooms,
         );
@@ -59,11 +59,11 @@ class RoomsController extends Controller
     {
         //
          $this->validate($request,[
-           'room'=>'required',
+           'number'=>'required|unique:rooms',
            'charges'=>'required|integer',
         ]);
 
-         $room = $request->room;
+         $room = $request->number;
          $charges = $request->charges;
 
          $room_object = new Room();

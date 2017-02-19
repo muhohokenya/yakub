@@ -12,4 +12,10 @@ class Room extends Model
     {
        return $this->belongsToMany('App\Service');
     }
+
+
+     public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

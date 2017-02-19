@@ -19,9 +19,9 @@
 					{!! Form::open(['method' => 'POST', 'url' => 'rooms/save', 'class' => '','autocomplete'=>'off']) !!}
 					
 					    <div class="form-group{{ $errors->has('room') ? ' has-error' : '' }}">
-					        {!! Form::label('room', 'room number') !!}
-					        {!! Form::text('room', null, ['class' => 'form-control']) !!}
-					        <small class="text-danger">{{ $errors->first('room') }}</small>
+					        {!! Form::label('number', 'room number') !!}
+					        {!! Form::text('number', null, ['class' => 'form-control']) !!}
+					        <small class="text-danger">{{ $errors->first('number') }}</small>
 					    </div>
 
 					    <div class="form-group{{ $errors->has('charges') ? ' has-error' : '' }}">

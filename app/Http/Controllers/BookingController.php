@@ -30,6 +30,15 @@ class BookingController extends Controller
         //
     }
 
+
+    public function showMyBookings()
+    {
+        $user_id = Sentinel::getUser()->id;
+
+        $bookings = Booking::where('user_id',$user_id)->get();
+        return view('rooms.my_rooms')->with('bookings',$bookings);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

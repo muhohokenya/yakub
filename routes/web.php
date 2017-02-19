@@ -14,14 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-
-// ROOMS
-Route::get('rooms','RoomsController@index');
+Route::group(['middleware' => 'admin'], function () {
 Route::get('rooms/new','RoomsController@create');
 Route::post('rooms/save','RoomsController@store');
-Route::get('available/rooms','RoomsController@get_available_rooms');
+
 
 
 // FOODS
@@ -35,8 +31,18 @@ Route::get('services','ServiceController@index');
 Route::get('services/new','ServiceController@create');
 Route::post('services/save','ServiceController@store');
 
+});
+
+
+
+// ROOMS
+Route::get('rooms','RoomsController@index');
+Route::get('available/rooms','RoomsController@get_available_rooms');
+
+// BOOKING
 Route::get('book/room/{id}','BookingController@show');
 Route::post('book/room/{id}','BookingController@update');
+Route::get('bookings','BookingController@showMyBookings');
 
 
 

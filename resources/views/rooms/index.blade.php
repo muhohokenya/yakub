@@ -15,7 +15,7 @@
 					<tr>
 						<th>#</th>
 						<th>Room Number</th>
-						<th>Room Charges</th>
+						<th>Charges</th>
 						<th>Room Services</th>
 					</tr>
 				</thead>
@@ -24,7 +24,7 @@
 			@foreach($rooms as $room)
 				     <tr>
 						<td>{{ $loop->iteration }}</td>
-						<td>{{ $room->number }}</td>
+						<td>Room {{ $room->number }}</td>
 						<td>{{ $room->charges }}</td>
 						<td>
 
@@ -42,6 +42,8 @@
 					
 				</tbody>
 			</table>
+
 		</div>
 	</div>
+	{{ $rooms }}
 @stop

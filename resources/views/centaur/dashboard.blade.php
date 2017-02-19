@@ -3,10 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="row">
+<div class="row" style="padding-top: 50px;">
     @if (Sentinel::check())
     <div class="">
-        <h1>Hello, {{ Sentinel::getUser() }}!</h1>
+        <h1>Hello, {{ Sentinel::getUser()->email }}!</h1>
         <p>You are now logged in now.</p>
     </div>
     @else
