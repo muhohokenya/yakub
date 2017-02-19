@@ -40,16 +40,16 @@
                             <li class="{{ Request::is('rooms*') ? 'active' : '' }}"><a href="{{ url('rooms') }}">Rooms</a></li>
                             <li class="{{ Request::is('foods*') ? 'active' : '' }}"><a href="{{ url('foods') }}">Foods</a></li>
                             <li class="{{ Request::is('services*') ? 'active' : '' }}"><a href="{{ url('services') }}">Services</a></li>
-                            <li class="{{ Request::is('services*') ? 'active' : '' }}"><a href="{{ url('services') }}">Services</a></li>
+                            
                         @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        @if (Sentinel::check())
+                        @if (Sentinel::check() && !Sentinel::inRole('administrator'))
                             <li><a href="{{ url('available/rooms') }}">Rooms</a></li>
                             <li><p class="navbar-text">{{ Sentinel::getUser()->email }}</p></li>
                            
                             <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
-                        @else
+                        @elseif(!Sentinel::check() && !Sentinel::inRole('administrator'))
                             <li><a href="{{ route('auth.login.form') }}">Login</a></li>
                             <li><a href="{{ route('auth.register.form') }}">Register</a></li>
                         @endif

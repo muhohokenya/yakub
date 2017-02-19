@@ -9,7 +9,7 @@
 				  <h3>Room {{ $room->number }}</h3>
 				</div>
 				
-				charges per night {{ $room->charges }}
+				charges per night <kbd>{{ $room->charges }}</kbd>
 
 				<a class="btn btn-link" role="button" data-toggle="collapse" href="#collapseExample{{ $room->id }}" aria-expanded="false" aria-controls="collapseExample">
   <div class="badge">{{ count($room->services) }}</div>  Services 
