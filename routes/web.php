@@ -35,6 +35,9 @@ Route::get('services','ServiceController@index');
 Route::get('services/new','ServiceController@create');
 Route::post('services/save','ServiceController@store');
 
+Route::get('book/room/{id}','BookingController@show');
+Route::post('book/room/{id}','BookingController@update');
+
 
 
 

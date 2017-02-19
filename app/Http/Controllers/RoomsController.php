@@ -27,7 +27,7 @@ class RoomsController extends Controller
     public function get_available_rooms()
     {
         # code...
-        $rooms = Room::all();
+        $rooms = Room::paginate(4);
         $data_array = array(
             'rooms'=>$rooms,
         );

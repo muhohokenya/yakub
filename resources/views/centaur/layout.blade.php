@@ -7,15 +7,23 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>@yield('title')</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
-        <!-- Bootstrap - Latest compiled and minified CSS -->
-        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+        <script type="text/javascript" src="{{ url('/bower_components/jquery/dist/jquery.min.js') }}"></script>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- ... -->
+
+        <!-- ... -->
+  <link rel="stylesheet" href="{{ url('/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" />
+   
+  <script type="text/javascript" src="{{ url('/bower_components/moment/min/moment.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url('/bower_components/bootstrap/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url('/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -49,9 +57,10 @@
                             <li><p class="navbar-text">{{ Sentinel::getUser()->email }}</p></li>
                            
                             <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
-                        @elseif(!Sentinel::check() && !Sentinel::inRole('administrator'))
+                        @else
                             <li><a href="{{ route('auth.login.form') }}">Login</a></li>
                             <li><a href="{{ route('auth.register.form') }}">Register</a></li>
+                            <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
                         @endif
                     </ul>
                 </div><!-- /.navbar-collapse -->
@@ -63,10 +72,15 @@
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+       
         <!-- Latest compiled and minified Bootstrap JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <!-- Restfulizer.js - A tool for simulating put,patch and delete requests -->
+       
         <script src="{{ asset('restfulizer.js') }}"></script>
+
+       
+
+
+
+        
     </body>
 </html>

@@ -10,7 +10,7 @@
 
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 "> 
+		 
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title">room Panel</h3>
@@ -29,6 +29,8 @@
 					        {!! Form::text('charges', null, ['class' => 'form-control']) !!}
 					        <small class="text-danger">{{ $errors->first('charges') }}</small>
 					    </div>
+
+					     {!! Form::label('Services', 'room Services') !!}
 
 					    <div class="checkbox">
 							@foreach($services as $service)
@@ -51,7 +53,7 @@
 					{!! Form::close() !!}
 				</div>
 			</div>
-		</div>
+		
 	</div>
 </div
 
