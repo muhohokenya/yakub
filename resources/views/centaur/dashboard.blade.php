@@ -4,16 +4,29 @@
 
 @section('content')
 <div class="row" style="padding-top: 50px;">
-    @if (Sentinel::check())
+    @if (Sentinel::check() && Sentinel::inRole('administrator'))
     <div class="">
-        <h1>Hello, {{ Sentinel::getUser()->email }}!</h1>
-        <p>You are now logged in now.</p>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($bookings as $booking)
+                    <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $booking->id }}</td>
+                    <td>{{ $booking->user }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     @else
         <div class="">
-            <h1>Welcome, Guest!</h1>
-            <p>You must login to continue.</p>
-            <p><a class="btn btn-primary btn-lg" href="{{ route('auth.login.form') }}" role="button">Log</a></p>
+            
+            <p><a class="btn btn-primary" href="{{ route('auth.login.form') }}" role="button">Sign In</a></p>
         </div>
     @endif
 

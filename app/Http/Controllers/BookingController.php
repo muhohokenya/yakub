@@ -124,7 +124,11 @@ class BookingController extends Controller
                     'updated_at'=>Carbon::now(),
                     ]
                 );
+
+
       }
+
+      return back()->with('status','You have Succesfully booked this room');
 
         
 
@@ -152,6 +156,8 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $room = Booking::findOrFail($id);
+        $room->delete($id);
+        return redirect('bookings')->with('status','Successfully Dropped The House');
     }
 }

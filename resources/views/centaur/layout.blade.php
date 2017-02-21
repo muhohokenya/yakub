@@ -40,7 +40,7 @@
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
                         
                         @if (Sentinel::check() && Sentinel::inRole('administrator'))
                             {{-- <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
@@ -48,17 +48,18 @@
                             <li class="{{ Request::is('rooms*') ? 'active' : '' }}"><a href="{{ url('rooms') }}">Rooms</a></li>
                             <li class="{{ Request::is('foods*') ? 'active' : '' }}"><a href="{{ url('foods') }}">Foods</a></li>
                             <li class="{{ Request::is('services*') ? 'active' : '' }}"><a href="{{ url('services') }}">Services</a></li>
-                            
-                        @endif
+                            <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
+                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        @if (Sentinel::check())
-                            <li><a href="{{ url('available/rooms') }}">Rooms</a></li>
-                            <li><a href="{{ url('bookings') }}">Bookings</a></li>
-                            <li><p class="navbar-text">{{ Sentinel::getUser()->email }}</p></li>
+                        @elseif (Sentinel::check())
+                        <li class="{{ Request::is('bookings*') ? 'active' : '' }}"><a href="{{ url('bookings') }}">My Bookings</a></li>
+                            
+                            <li class="{{ Request::is('available/rooms*') ? 'active' : '' }}"><a href="{{ url('available/rooms') }}">Rooms</a></li>
+                            
                            
                             <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
-                        @else
+                        @elseif(Sentinel::guest())
                             <li><a href="{{ route('auth.login.form') }}">Login</a></li>
                             <li><a href="{{ route('auth.register.form') }}">Register</a></li>
                            
@@ -67,7 +68,7 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <div class="container" style="padding-top:50px; ">
+        <div class="container" style="padding-top:100px; ">
             @include('Centaur::notifications')
             @yield('content')
         </div>

@@ -32,13 +32,13 @@
 	
 	    <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
 	        {!! Form::label('first_name', 'Full Name') !!}
-	        {!! Form::text('first_name', null, ['class' => 'form-control', 'required' => 'required']) !!}
+	        {!! Form::text('first_name', strtoupper(Sentinel::getUser()->first_name), ['class' => 'form-control', 'required' => 'required']) !!}
 	        <small class="text-danger">{{ $errors->first('first_name') }}</small>
 	    </div>
 
 	    <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-	        {!! Form::label('last_name', 'Full Name') !!}
-	        {!! Form::text('last_name', null, ['class' => 'form-control', 'required' => 'required']) !!}
+	        {!! Form::label('last_name', 'Last Name') !!}
+	        {!! Form::text('last_name', strtoupper(Sentinel::getUser()->last_name), ['class' => 'form-control', 'required' => 'required']) !!}
 	        <small class="text-danger">{{ $errors->first('last_name') }}</small>
 	    </div>
 
@@ -46,7 +46,7 @@
 
 	    <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
 	        {!! Form::label('phone_number', 'Mobile Phone Number') !!}
-	        {!! Form::text('phone_number', null, ['class' => 'form-control', 'required' => 'required']) !!}
+	        {!! Form::text('phone_number', strtoupper(Sentinel::getUser()->phone_number), ['class' => 'form-control', 'required' => 'required']) !!}
 	        <small class="text-danger">{{ $errors->first('phone_number') }}</small>
 	    </div>
 

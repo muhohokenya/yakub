@@ -26,7 +26,7 @@
                         </label>
                     </div>
                     <input name="_token" value="{{ csrf_token() }}" type="hidden">
-                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+                    <input class="btn btn-primary" type="submit" value="Login">
                     <p style="margin-top:5px; margin-bottom:0"><a href="{{ route('auth.password.request.form') }}" type="submit">Forgot your password?</a></p>
                 </fieldset>
                 </form>

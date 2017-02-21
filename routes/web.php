@@ -43,6 +43,7 @@ Route::get('available/rooms','RoomsController@get_available_rooms');
 Route::get('book/room/{id}','BookingController@show');
 Route::post('book/room/{id}','BookingController@update');
 Route::get('bookings','BookingController@showMyBookings');
+Route::get('bookings/delete/{id}','BookingController@destroy');
 
 
 
@@ -83,8 +84,6 @@ Route::resource('users', 'UserController');
 Route::resource('roles', 'RoleController');
 
 // Dashboard
-Route::get('dashboard', ['as' => 'dashboard', 'uses' => function() {
-    return view('centaur.dashboard');
-}]);
+Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
 
 // SENTINELL
