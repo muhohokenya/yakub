@@ -92,7 +92,12 @@
 </div>
 </div>
 <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-	<code>please Pay {{ array_sum($total) }} To</code>
+	@if (count($total))
+		<div class="alert alert-success">
+			{{-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> --}}
+			<strong>Pay!</strong> please Pay {{ array_sum($total) }} To
+		</div>
+	@endif
 		<img src="{{ url('img/mpesa.png') }}">
 </div>
 @stop
