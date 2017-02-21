@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     //
-    protected $table = 'booking_user';
+    protected $table = 'room_user';
 
 
     public function user()

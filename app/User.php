@@ -28,8 +28,8 @@ class User extends Authenticatable
     ];
 
 
-    public function booking()
+    public function room()
     {
-        return $this->belongsToMany('App\Booking');
+        return $this->belongsToMany('App\Room');
     }
 }

@@ -114,7 +114,7 @@ class BookingController extends Controller
       if($this->hasBooked($user->id,$room->id)){
         return back()->with('status','You have already booked this room');
       }else{
-        DB::table('booking_user')->insert(
+        DB::table('room_user')->insert(
                     [
                     'user_id' => $user->id,
                     'room_id' => $room->id,
