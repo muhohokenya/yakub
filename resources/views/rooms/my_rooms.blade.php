@@ -37,8 +37,12 @@
 				</tr>
 			</thead>
 			<tbody>
+			@php
+				$total = [];
+			@endphp
 			@foreach ($bookings as $booking)
 			{{-- {{ $booking }} --}}
+			
 				<tr>
 					<td>{{ $loop->iteration }}</td>
 					<td>{{ $booking->room_id }}</td>
@@ -69,13 +73,16 @@
                     <td>{{ $booking->to_date }}</td>
                     <td class="hidden-xs">{{ $to_day->diffInDays($from_day) }} <small>days</small></td>
                     <td>{{ App\Room::find($booking->room_id)->charges }}</td>
-                    
+                    @php
+                    	$total[] = ($to_day->diffInDays($from_day) * App\Room::find($booking->room_id)->charges);
+                    @endphp
                     
                     
                     <td>{{ ($to_day->diffInDays($from_day) * App\Room::find($booking->room_id)->charges) }}</td>
                     <td><a href="{{ url('/bookings/delete',array($booking->id)) }}" class="text-danger">Drop</a></td>
 				</tr>
 			@endforeach
+			
 				
 			</tbody>
 		</table>
@@ -85,7 +92,7 @@
 </div>
 </div>
 <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-	
+	<code>please Pay {{ array_sum($total) }} To</code>
 		<img src="{{ url('img/mpesa.png') }}">
 </div>
 @stop
