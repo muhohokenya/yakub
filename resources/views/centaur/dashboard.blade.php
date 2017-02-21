@@ -7,6 +7,9 @@
 <div class="row" style="padding-top: 50px;">
     @if (Sentinel::check() && Sentinel::inRole('administrator'))
     <div class="">
+    <div class="page-header">
+      <h1>Booked Rooms <small class="badge">{{ count($bookings) }}</small></h1>
+    </div>
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
