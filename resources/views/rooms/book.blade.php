@@ -57,7 +57,7 @@
     		<label>From date</label>
         <div class="form-group">
             <div class='input-group date' id='datetimepicker6'>
-                <input name="from_date" type='text' class="form-control" />
+                <input required name="from_date" type='text' class="form-control" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -68,7 +68,7 @@
     <label>To date</label>
         <div class="form-group">
             <div class='input-group date' id='datetimepicker7'>
-                <input name="to_date" type='text' class="form-control" />
+                <input required name="to_date" type='text' class="form-control" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>

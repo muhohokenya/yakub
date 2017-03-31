@@ -9,6 +9,6 @@ class Service extends Model
     //
     public function room()
     {
-       return $this->belongsToMany('App\Room');
+       return $this->belongsToMany('App\Room','room_service');
     }
 }

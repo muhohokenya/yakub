@@ -29,9 +29,9 @@
 						<td>
 
 						   <div class="checkbox">
-							@foreach($room->services as $service)
+							  @foreach($room->services as $service)
 							 <label>
-								<input name="services[]"  checked="" readonly="" type="checkbox" value="{{ $service->id }}">
+								<input name="services[]"  checked readonly type="checkbox" value="{{ $service->id }}">
 								{{ $service->name }}
 							</label>
 							@endforeach

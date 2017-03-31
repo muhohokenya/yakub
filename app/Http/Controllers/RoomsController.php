@@ -66,19 +66,20 @@ class RoomsController extends Controller
          $room = $request->number;
          $charges = $request->charges;
 
+
          $room_object = new Room();
          $room_object->number = $room;
          $room_object->charges = $charges;
          $room_object->save();
+         $room_id = Room::where('number',$room)->first()->id;
 
 
           $services = $request->services;
          
           if(is_array($services)){
-
                  foreach ($services as $service) {
                   DB::table('room_service')->insert(
-                    ['room_id' => $room,'service_id' => $service]
+                    ['room_id' => $room_id,'service_id' => $service]
                 );
           }
           }
@@ -86,6 +87,10 @@ class RoomsController extends Controller
          
           
           return redirect('/rooms');
+    }
+
+    public function countBooking(){
+
     }
 
 

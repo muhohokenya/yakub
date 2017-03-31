@@ -23,6 +23,12 @@
    
   <script type="text/javascript" src="{{ url('/bower_components/moment/min/moment.min.js') }}"></script>
   <script type="text/javascript" src="{{ url('/bower_components/bootstrap/bootstrap.min.js') }}"></script>
+
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+        <link rel="stylesheet" href="{{ url('calendar/fullcalendar.css') }}">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+        <script type="text/javascript" src="{{ url('calendar/fullcalendar.js') }}"></script>
   <script type="text/javascript" src="{{ url('/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
     </head>
     <body>
@@ -45,9 +51,11 @@
                         @if (Sentinel::check() && Sentinel::inRole('administrator'))
                             {{-- <li class="{{ Request::is('users*') ? 'active' : '' }}"><a href="{{ route('users.index') }}">Users</a></li>
                             <li class="{{ Request::is('roles*') ? 'active' : '' }}"><a href="{{ route('roles.index') }}">Roles</a></li> --}}
+                            <li class="{{ Request::is('dashboard*') ? 'active' : '' }}"><a href="{{ url('dashboard') }}">Home</a></li>
                             <li class="{{ Request::is('rooms*') ? 'active' : '' }}"><a href="{{ url('rooms') }}">Rooms</a></li>
                             <li class="{{ Request::is('foods*') ? 'active' : '' }}"><a href="{{ url('foods') }}">Foods</a></li>
                             <li class="{{ Request::is('services*') ? 'active' : '' }}"><a href="{{ url('services') }}">Services</a></li>
+                            <li class="{{ Request::is('reports*') ? 'active' : '' }}"><a href="{{ url('reports') }}">Reports</a></li>
                             <li><a href="{{ route('auth.logout') }}">Log Out</a></li>
                         
                     </ul>

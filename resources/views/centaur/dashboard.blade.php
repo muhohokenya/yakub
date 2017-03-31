@@ -4,7 +4,7 @@
 
 @section('content')
 @php $current =  new Carbon\carbon() @endphp
-<div class="row" style="padding-top: 50px;">
+<div class="row">
     @if (Sentinel::check() && Sentinel::inRole('administrator'))
     <div class="">
     <div class="page-header">
